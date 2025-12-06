@@ -1,11 +1,12 @@
 {
-  "$schema": "https://railway.app/railway.schema.json",
-  "build": {
-    "builder": "RAILPACK"
-  },
-  "deploy": {
-    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT",
-    "restartPolicyType": "ON_FAILURE",
-    "restartPolicyMaxRetries": 10
-  }
+    "$schema": "https://railway.app/railway.schema.json",
+    "build": {
+        "builder": "RAILPACK",
+        "buildCommand": "COMPOSER_ALLOW_SUPERUSER=1 COMPOSER_MEMORY_LIMIT=-1 composer install --ignore-platform-reqs --no-dev --optimize-autoloader"
+    },
+    "deploy": {
+        "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT",
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+    }
 }
